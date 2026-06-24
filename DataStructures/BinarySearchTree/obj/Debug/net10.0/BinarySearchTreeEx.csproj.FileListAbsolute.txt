@@ -1,0 +1,15 @@
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\bin\Debug\net10.0\BinarySearchTreeEx.exe
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\bin\Debug\net10.0\BinarySearchTreeEx.deps.json
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\bin\Debug\net10.0\BinarySearchTreeEx.runtimeconfig.json
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\bin\Debug\net10.0\BinarySearchTreeEx.dll
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\bin\Debug\net10.0\BinarySearchTreeEx.pdb
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\obj\Debug\net10.0\BinarySearchTreeEx.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\obj\Debug\net10.0\BinarySearchTreeEx.AssemblyInfoInputs.cache
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\obj\Debug\net10.0\BinarySearchTreeEx.AssemblyInfo.cs
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\obj\Debug\net10.0\BinarySearchTreeEx.csproj.CoreCompileInputs.cache
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\obj\Debug\net10.0\BinarySearchTreeEx.sourcelink.json
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\obj\Debug\net10.0\BinarySearchTreeEx.dll
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\obj\Debug\net10.0\refint\BinarySearchTreeEx.dll
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\obj\Debug\net10.0\BinarySearchTreeEx.pdb
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\obj\Debug\net10.0\BinarySearchTreeEx.genruntimeconfig.cache
+C:\Users\ewama\source\repos\JasonProgrammingAssignments\Queue\BinarySearchTree\obj\Debug\net10.0\ref\BinarySearchTreeEx.dll
