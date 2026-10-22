@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="../Attributes/Attributes.csproj" Id="e029cc42-bf6b-4381-a3b2-ea02ed588f1c" />
   <Project Path="Kalkulator.csproj" />
 </Solution>

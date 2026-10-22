@@ -1,0 +1,4 @@
+
+   {{Component}} |  P={{Probability}} | {{Mode}}  | Owner: {{Owner}}
+   There is {{Probability}} probability that {{Component}} fails
+

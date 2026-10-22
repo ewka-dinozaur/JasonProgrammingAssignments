@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="Bank/Bank.csproj" Id="54adfea3-ed5a-40b1-9277-7006dfbf346d" />
+  <Project Path="Generics/Generics.csproj" Id="778e050c-100e-49ee-b1a4-7caa8e71f8e6" />
+  <Project Path="Regex/Regex.csproj" Id="4850962c-e00a-42c1-a0a6-99e3442c4fc2" />
+  <Project Path="RestaurantOrderSystem/RestaurantOrderSystem.csproj" Id="5acef33f-c4c7-4c64-bf9b-7523dd3b735a" />
+  <Project Path="SensorDemo/SensorDemo.csproj" />
+  <Project Path="SmartHome/SmartHome.csproj" />
+  <Project Path="ZooManagement/ZooManagement.csproj" />
+</Solution>
