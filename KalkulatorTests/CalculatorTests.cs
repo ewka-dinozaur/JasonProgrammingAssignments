@@ -31,12 +31,12 @@ namespace Kalkulator.Tests
         }
 
         [Fact]
-        public void Subtract_TwoNumbers_ReturnsSubstraction()
+        public void Subtract_TwoNumbers_ReturnsDifference()
         {
             // Arrange - tworzy nowa instancje klasy Calculator
             var calc = new Calculator();
 
-            // Act - wywołuje metodę Add z dwoma liczbami dodatnimi
+            // Act - wywołuje metodę Sub 
             double result = calc.Sub(2, 3);
 
             // Assert - sprawdza, czy wynik jest równy oczekiwanej sumie
@@ -50,7 +50,7 @@ namespace Kalkulator.Tests
             // Arrange - tworzy nowa instancje klasy Calculator
             var calc = new Calculator();
 
-            // Act - wywołuje metodę Add z dwoma liczbami dodatnimi
+            // Act - wywołuje metodę Mul
             double result = calc.Mul(2, 3);
 
             // Assert - sprawdza, czy wynik jest równy oczekiwanej sumie
@@ -59,7 +59,7 @@ namespace Kalkulator.Tests
 
 
         [Fact]
-        public void Multiply_ByZero_ReturnsProduct()
+        public void Multiply_ByZero_Multiply_ByZero_ReturnsZero()
         {
             // Arrange - tworzy nowa instancje klasy Calculator
             var calc = new Calculator();
