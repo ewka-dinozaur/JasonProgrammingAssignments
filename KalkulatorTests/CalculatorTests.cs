@@ -88,7 +88,6 @@ namespace Kalkulator.Tests
         }
 
         [Fact]
-
         public void Div_ByZero_ThrowsDivideByZeroException()
         {
 
@@ -100,9 +99,32 @@ namespace Kalkulator.Tests
 
             // Check message of exception
             Assert.Contains("zero", ex.Message);
+        }
 
+
+        // Testing using Theory and InlineData attributes
+
+        [Theory]
+        [InlineData(2,3,5)]
+        [InlineData(4, -1,3)]
+        [InlineData(-2, -3, -5)]
+        [InlineData(2,0,2)]
+        [InlineData(2.5,3.5,6)]
+        [InlineData(5, 0.5, 5.5)]
+        public void Add_VariousNumbers_ReturnsSum(double a, double b, double expected)
+        {
+            // Arrange
+            var calc = new Calculator();
+
+            // Act
+            double result = calc.Add(a, b);
+
+            // Assert
+            Assert.Equal(expected, result);
 
         }
 
+
     }
 }
+

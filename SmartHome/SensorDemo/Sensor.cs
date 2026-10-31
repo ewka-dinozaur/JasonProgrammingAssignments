@@ -44,7 +44,7 @@ namespace SensorDemo
             {
                 if (value < 0 || value > 10)
                 { 
-                throw new ArgumentException("Smoke level must be between 0 and 10 ");
+                    throw new ArgumentException("Smoke level must be between 0 and 10 ");
                 }
 
                 else
