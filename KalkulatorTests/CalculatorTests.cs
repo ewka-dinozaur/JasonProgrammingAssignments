@@ -72,5 +72,37 @@ namespace Kalkulator.Tests
         }
 
 
+        // Division tests - regular unit test and exception test
+
+        [Fact]
+        public void Div_TwoNumbers_ReturnsQuotient()
+        {
+            // Arrange - tworzy nowa instancje klasy Calculator
+            var calc = new Calculator();
+
+            // Act - wywołuje metodę Div z dwoma liczbami dodatnimi
+            double result = calc.Div(6, 3);
+
+            // Assert - sprawdza, czy wynik jest równy oczekiwanemu ilorazowi
+            Assert.Equal(2, result);
+        }
+
+        [Fact]
+
+        public void Div_ByZero_ThrowsDivideByZeroException()
+        {
+
+            //Arrange - tworzy nowa instancje klasy Calculator
+            var calc = new Calculator();
+
+            //Act & Assert - sprawdza, czy metoda Div rzuca wyjątek DivideByZeroException - w przypadku Throws act and assert sa razem bo potrzebna jest funkcja lambda
+            var ex = Assert.Throws<DivideByZeroException>(() => calc.Div(5, 0)); // ()=>calc.Div(5, 0) - to wyrazenie lambda typu Action bo nie ma parametrow (puste nawiasy po lewej) a po prawej wywolanie metody Div z argumentami 5 i 0. 
+
+            // Check message of exception
+            Assert.Contains("zero", ex.Message);
+
+
+        }
+
     }
 }

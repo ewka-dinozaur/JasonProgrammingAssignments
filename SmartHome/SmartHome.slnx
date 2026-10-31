@@ -3,6 +3,7 @@
   <Project Path="Generics/Generics.csproj" Id="778e050c-100e-49ee-b1a4-7caa8e71f8e6" />
   <Project Path="Regex/Regex.csproj" Id="4850962c-e00a-42c1-a0a6-99e3442c4fc2" />
   <Project Path="RestaurantOrderSystem/RestaurantOrderSystem.csproj" Id="5acef33f-c4c7-4c64-bf9b-7523dd3b735a" />
+  <Project Path="SensorDemo.Tests/SensorDemo.Tests.csproj" Id="3f97a404-5a41-4f0f-9419-f936287efcba" />
   <Project Path="SensorDemo/SensorDemo.csproj" />
   <Project Path="SmartHome/SmartHome.csproj" />
   <Project Path="ZooManagement/ZooManagement.csproj" />

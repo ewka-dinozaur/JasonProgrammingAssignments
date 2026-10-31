@@ -1,5 +1,17 @@
 ﻿using SensorDemo;
 
+// exception for smoke sensor
+try
+{
+
+    var SmokeSensorTest = new SmokeSensor("Launge") { SmokeLevel = 11 };
+}
+catch (ArgumentException)
+{
+    Console.WriteLine($"Error: Level reading incorrect");
+}
+
+
 List<Sensor> sensors = new List<Sensor>();
 sensors.Add(new SmokeSensor("LivingRoom") { SmokeLevel = 7 });
 sensors.Add(new TemperatureSensor("Bedroom") { Temperature = 22 });

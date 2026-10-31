@@ -12,7 +12,7 @@ namespace SensorDemo
         void SendAlert(string message);
     }
 
-    internal abstract class Sensor
+    public abstract class Sensor
     {
 
         protected string Location;
@@ -26,7 +26,7 @@ namespace SensorDemo
 
 
     // Class for SmokeSensor with appliec interface and abstract Measure method override 
-    internal class SmokeSensor : Sensor, INotifiable
+    public class SmokeSensor : Sensor, INotifiable
     {
         private int _smokeLevel;
 
@@ -43,9 +43,15 @@ namespace SensorDemo
             set
             {
                 if (value < 0 || value > 10)
-                    throw new ArgumentException("Smoke level must be between 0 and 10 ");
+                { 
+                throw new ArgumentException("Smoke level must be between 0 and 10 ");
+                }
+
                 else
+                {
                     _smokeLevel = value;
+                }
+              
             }
         }
 
@@ -61,8 +67,11 @@ namespace SensorDemo
     }
 
 
+
+
+
     // Class for TemperatureSensore with abstract Measure method override but without interface
-    internal class TemperatureSensor : Sensor
+    public class TemperatureSensor : Sensor
     {
         private int _temperature;
 
