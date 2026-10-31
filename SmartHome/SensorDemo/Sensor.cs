@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Net.NetworkInformation;
 using System.Text;
+using System.Threading.Channels;
 
 namespace SensorDemo
 
@@ -29,10 +30,15 @@ namespace SensorDemo
     public class SmokeSensor : Sensor, INotifiable
     {
         private int _smokeLevel;
+        private IAlertChannel _channel; // prywatne pole typu interface do wysylania alertow do roznych kanalow (Console, Email, SMS, itp.)
+
+
 
         // konstruktor
-        public SmokeSensor(string location) : base(location)
-        { 
+        public SmokeSensor(string location, IAlertChannel channel) : base(location)
+
+        {
+            _channel = channel;
         }
 
         public int SmokeLevel
@@ -50,6 +56,11 @@ namespace SensorDemo
                 else
                 {
                     _smokeLevel = value;
+                    if (_smokeLevel >= 7)
+                    {
+                        SendAlert($"High smoke level: {value}");
+                    }
+                 
                 }
               
             }
@@ -57,7 +68,8 @@ namespace SensorDemo
 
         public void SendAlert(string message)
         {
-            Console.WriteLine($"  >> ALERT from {Location}: {message}");
+            // Console.WriteLine($"  >> ALERT from {Location}: {message}"); // original hard coded alert message to console
+            _channel.Send($"from {Location}: {message}");
         }
 
         public override void Measure()

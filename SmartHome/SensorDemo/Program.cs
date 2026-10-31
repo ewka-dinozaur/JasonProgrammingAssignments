@@ -4,7 +4,7 @@
 try
 {
 
-    var SmokeSensorTest = new SmokeSensor("Launge") { SmokeLevel = 11 };
+    var SmokeSensorTest = new SmokeSensor("Launge", new ConsoleAlertChannel()) { SmokeLevel = 11 };
 }
 catch (ArgumentException)
 {
@@ -13,7 +13,7 @@ catch (ArgumentException)
 
 
 List<Sensor> sensors = new List<Sensor>();
-sensors.Add(new SmokeSensor("LivingRoom") { SmokeLevel = 7 });
+sensors.Add(new SmokeSensor("LivingRoom", new ConsoleAlertChannel()) { SmokeLevel = 7 });
 sensors.Add(new TemperatureSensor("Bedroom") { Temperature = 22 });
 
 foreach (Sensor s in sensors)

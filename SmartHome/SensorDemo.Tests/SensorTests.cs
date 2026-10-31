@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
+using SensorDemo;
+using SensorDemo.Tests;
 
 namespace SensorDemo.Tests
 {
@@ -79,7 +81,7 @@ namespace SensorDemo.Tests
         {
 
             // Arrange
-            var sensor = new SmokeSensor("garage");
+            var sensor = new SmokeSensor("garage", new ConsoleAlertChannel());
 
             // Act
             sensor.SmokeLevel = value;
@@ -98,7 +100,7 @@ namespace SensorDemo.Tests
         {
 
             // Arrange
-            var sensor = new SmokeSensor("basement");
+            var sensor = new SmokeSensor("basement", new ConsoleAlertChannel());
 
             // Act and Assert using lambda expression to test for exception
             var ex = Assert.Throws<ArgumentException>(() => sensor.SmokeLevel = value);
@@ -146,6 +148,62 @@ namespace SensorDemo.Tests
 
         }
 
+        // MOCKING using spy test with fake alert channel to verify that SendAlert is called when SmokeLevel exceeds threshold
+
+        [Fact]
+        public void SmokeLevel_AboveThreshold_SendsAlert()
+        {
+            // Arrange
+            var fake = new FakeAlertChannel();
+            var sensor = new SmokeSensor("Kitchen", fake);
+
+            // Act
+            sensor.SmokeLevel = 8;
+
+            // Assert
+            Assert.Single(fake.Messages); // Verify that one alert message was sent - that there is one element in Messages list
+            Assert.Contains("8", fake.Messages[0]); // verified that the alert message contains the expected smoke level value
+        }
+
+
+        [Fact]
+        public void SmokeLevel_BelowThreshold_SendsNoAlert()
+        {
+            // Arrange
+            var fake = new FakeAlertChannel();
+            var sensor = new SmokeSensor("Kitchen", fake);
+
+            // Act
+            sensor.SmokeLevel = 3;
+
+            // Assert
+            Assert.Empty(fake.Messages); // Verify that the list of alert messages is empty - that no alert message was sent
+
+        }
+
+        [Theory]
+        [InlineData(6, 0)] // below threshold, no alert
+        [InlineData(7, 1)] // at threshold, one alert
+        public void SmokeLevel_AtThreshold_SendsExpectedAlerts(int value, int expectedCount)
+        {
+
+            // Arrange
+            var fake = new FakeAlertChannel();
+            var sensor = new SmokeSensor("toilet", fake);
+
+            // Act and Assert using lambda expression to test for exception
+            sensor.SmokeLevel = value;
+
+            // Assert
+            Assert.Equal(expectedCount, fake.Messages.Count);
+
+        }
     }
 }
+
+
+
+
+
+
 
