@@ -191,7 +191,7 @@ namespace SensorDemo.Tests
             var fake = new FakeAlertChannel();
             var sensor = new SmokeSensor("toilet", fake);
 
-            // Act and Assert using lambda expression to test for exception
+            // Act
             sensor.SmokeLevel = value;
 
             // Assert

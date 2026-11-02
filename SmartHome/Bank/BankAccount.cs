@@ -11,7 +11,7 @@ namespace Bank
     }
 
 
-    internal interface ITransferable
+    public interface ITransferable
     {
         bool TransferTo(BankAccount target, double amount);
     }
@@ -25,7 +25,7 @@ namespace Bank
     }
 
 
-    internal abstract class BankAccount 
+    public abstract class BankAccount 
     {
         public string AccountNumber { get; set; } // walidacja: nie puste
         protected readonly ILogger _logger; // 
@@ -76,12 +76,9 @@ namespace Bank
                 total = total + k.Balance;
             Console.WriteLine($"Calkowite saldo  {total}");
         }
+}
 
-
-
-    }
-
-    internal class SavingAccount : BankAccount, ITransferable
+    public class SavingAccount : BankAccount, ITransferable
     {
 
         private double _interest;
@@ -89,15 +86,13 @@ namespace Bank
         {
             get { return _interest; }
             private set {
-                if (value <= 0) 
+                if (value < 0) 
                     throw new ArgumentException("Interest cannot be negative");
                 else 
                     _interest= value; } 
         }
 
-        private double _limit;
-
-        
+        private double _limit;   
         public double Limit
         {
             get { return _limit; }
@@ -112,29 +107,26 @@ namespace Bank
 
         public SavingAccount(string accountNumber, double initialBalance, double limit, double interest, ILogger logger): base( accountNumber, initialBalance, logger)
         {
-            Interest = interest/100;
-            Limit = limit/100;
+            Interest = interest;
+            Limit = limit;
         }
 
         public override double CalculateInterest()
         {
-            double interest_monthly = Balance * Interest;
+            double interest_monthly = Balance * Interest/100;
             return interest_monthly;
         }
 
         public override void Withdraw(double amount)
         {
-            
-            
             if (amount <= 0)
-                    throw new ArgumentException("Withdrawal amount must be positive");
-            if (amount >  Balance * Limit)
+                throw new ArgumentException("Withdrawal amount must be positive");
+            if (amount >  Balance * Limit/100)
                 throw new ArgumentException("The amount is over allowed limit. Change limits or adjust amount.");
             else 
                 Balance -= amount;
             _logger.Log($"Withdrew {amount}. New balance: {Balance}");
         }
-
 
         public bool TransferTo(BankAccount target, double amount)
         {
@@ -154,7 +146,7 @@ namespace Bank
         }
 
 
-    internal class CheckingAccount : BankAccount, ITransferable
+    public class CheckingAccount : BankAccount, ITransferable
     {
 
         public double Debet { get; set; }
@@ -200,7 +192,7 @@ namespace Bank
 
     }
 
-    internal class FixedDepositAccount : BankAccount
+    public class FixedDepositAccount : BankAccount
     {
 
         public DateTime UnlockDate { get; set; }

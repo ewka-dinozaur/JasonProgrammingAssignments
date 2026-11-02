@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Bank
 {
-    internal class AccountManager<T> where T : BankAccount // constraint that Account Manager working on type T where T is BankAccount object 
+    public class AccountManager<T> where T : BankAccount // constraint that Account Manager working on type T where T is BankAccount object 
     {
 
         private List<T> _accounts = new List<T>(); // private list object with elements of type T 
