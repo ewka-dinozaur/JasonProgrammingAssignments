@@ -6,7 +6,7 @@ List<BankAccount> accounts = new List<BankAccount>();
 
 SavingAccount savings = new SavingAccount("PL001", 1000, 30, 3, logger);
 CheckingAccount checking = new CheckingAccount("PL002", 500, 200, logger);
-FixedDepositAccount deposit = new FixedDepositAccount("PL003", 8000, 7, 12, logger);
+FixedDepositAccount deposit = new FixedDepositAccount("PL003", 8000, 7, new SystemClock(), 12, logger);
 
 accounts.Add(savings);
 accounts.Add(checking);

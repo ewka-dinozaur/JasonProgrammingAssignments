@@ -16,6 +16,13 @@ namespace Bank
         bool TransferTo(BankAccount target, double amount);
     }
 
+    public interface IClock
+    {
+        DateTime UtcNow { get; }   // każda implementacja musi mieć property UtcNow z getterem
+    }
+
+
+
     public class ConsoleLogger : ILogger
     {
         public void Log(string message)
@@ -194,14 +201,16 @@ namespace Bank
 
     public class FixedDepositAccount : BankAccount
     {
-
-        public DateTime UnlockDate { get; set; }
+       
+        private IClock _clock;
         public double Interest { get; set; }
+        public DateTime UnlockDate { get; set; }
 
-        public FixedDepositAccount(string accountNumber, double initialBalance, double interest, int monthsLocked , ILogger logger)
+        public FixedDepositAccount(string accountNumber, double initialBalance, double interest, IClock clock, int months,  ILogger logger)
             : base(accountNumber, initialBalance, logger)
         {
-            UnlockDate = DateTime.UtcNow.AddMonths(monthsLocked); // np. za 12 miesięcy
+            _clock = clock;
+            UnlockDate = _clock.UtcNow.AddMonths(months); // np. za 12 miesięcy
             Interest = interest;
         }
 
@@ -214,12 +223,13 @@ namespace Bank
 
         public override void Withdraw(double amount)
         {
-            if (DateTime.Now < UnlockDate)
+            if (_clock.UtcNow < UnlockDate)
                 throw new ArgumentException("Cannot withdraw before unlock date");
             base.Withdraw(amount); // jeśli data minęła, użyj normalnej logiki z BankAccount
         }
 
     }
 
-
+    
 }
+

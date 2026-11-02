@@ -1,7 +1,5 @@
 ﻿using Bank;
-using Newtonsoft.Json.Linq;
 using System.Security.Principal;
-
 
 namespace Bank.Tests
 {
@@ -108,7 +106,7 @@ namespace Bank.Tests
             var limit = account.Limit;
 
             // Assert 
-            Assert.Equal(value, limit); // the limit is set as percentage of the balance, so 30% = 0.3
+            Assert.Equal(value, limit); 
 
         }
 
@@ -176,6 +174,37 @@ namespace Bank.Tests
             // Act and Assert using lambda expression to test for exception
             Assert.Equal(10, account.CalculateInterest());
 
+        }
+
+        // Fixed account tests
+
+        [Fact]
+        public void Withdraw_BeforeUnlockDate_ThrowsArgumentException()
+        {
+            // Arrange
+            var clock = new FakeClock();
+            clock.UtcNow = new DateTime(2026, 1, 1);                       // "teraz" przy zakładaniu konta
+            var account = new FixedDepositAccount("PL003", 8000, 7, clock, 12, new FakeLogger());
+            clock.UtcNow = account.UnlockDate.AddSeconds(-1);              // przesuń czas: sekunda przed odblokowaniem
+
+            // Act + Assert
+            Assert.Throws<ArgumentException>(() => account.Withdraw(100));
+        }
+
+        [Fact]
+        public void Withdraw_AtUnlockDate_DecreasesBalance()
+        {
+            // Arrange
+            var clock = new FakeClock();
+            clock.UtcNow = new DateTime(2026, 1, 1);                       // "teraz" przy zakładaniu konta
+            var account = new FixedDepositAccount("PL003", 8000, 7, clock, 12, new FakeLogger());
+            clock.UtcNow = account.UnlockDate;              // przesuń czas: w czasie odblokowania
+
+            // Act
+            account.Withdraw(100);
+
+            // Assert
+            Assert.Equal(7900, account.Balance);
         }
     }
 }
